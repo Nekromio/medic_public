@@ -27,7 +27,7 @@ Plugin myinfo =
 	name = "[Fork] Medic/Медик",
 	author = "tuty, Nek.'a 2x2 | ggwp.site ",
 	description = "Возможность вызова медика",
-	version = "1.0.2",
+	version = "1.0.3",
 	url = "https://ggwp.site/"
 };
 
@@ -82,12 +82,12 @@ public void OnMapStart()
 	}
 }
 
-Action Event_PlayerSpawn(Handle hEvent, const char[] sName, bool dontBroadcast)
+Action Event_PlayerSpawn(Event hEvent, const char[] sName, bool dontBroadcast)
 {
 	if(!cvEnable.BoolValue)
 		return;
 	
-	int client = GetClientOfUserId(GetEventInt(hEvent, "userid"));
+	int client = GetClientOfUserId(hEvent.GetInt("userid"));
 
 	iMaxUsePlayers[client] = 0;
 }
@@ -117,7 +117,8 @@ Action Command_Medic(int client, any args)
 		return Plugin_Handled;
 	}
 	
-	if(GetClientHealth(client) >= cvMinHealth.IntValue)
+	int health = GetClientHealth(client);
+	if(health >= cvMinHealth.IntValue)
 	{
 		CPrintToChat(client, "%t", "Tag", "Too much health");	
 		return Plugin_Handled;
@@ -134,7 +135,7 @@ Action Command_Medic(int client, any args)
 		char sName[32];
 		GetClientName(client, sName, sizeof(sName) - 1);
 		for(int i = 1; i <= MaxClients; i++) if(i != client && IsClientInGame(i) && !IsFakeClient(i))
-			CPrintToChat(i, "%t", "Tag", "I called a medic", sName, GetClientHealth(client));
+			CPrintToChat(i, "%t", "Tag", "I called a medic", sName, health);
 	}
 	
 	float fOrigin[3];
