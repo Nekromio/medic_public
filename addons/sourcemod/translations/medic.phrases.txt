@@ -1,0 +1,42 @@
+"Phrases"
+{
+	"Tag"
+	{
+		"#format"	"{1:t}"
+		"en"		"{GREEN}[Medic]{DEFAULT} {1}"
+		"ru"		"{GREEN}[Медик]{DEFAULT} {1}"
+	}
+	
+	"Limit"
+	{
+		"#format"	"{1:d}"
+		"en"		"You can call Medic only {1} times per round!"
+		"ru"		"Вы можете вызвать Медика только {1} раз за раунд!"
+	}
+	
+	"Not enough cash"
+	{
+		"#format"	"{1:d}"
+		"en"		"You don't have enough money to call a Medic ! You need {1}$"
+		"ru"		"У тебя не хватит денег, чтобы вызвать Медика ! Тебе нужно {1}$"
+	}
+	
+	"Too much health"
+	{
+		"en"		"You have enough health, and you don't need a Medic !"
+		"ru"		"У вас достаточно здоровья, и вам не нужен медик !"
+	}
+	
+	"The medic helped"
+	{
+		"en"		"Successfully called a Medic ! You are now healed."
+		"ru"		"Успешно вызвали Медика ! Теперь ты исцелен."
+	}
+	
+	"I called a medic"
+	{
+		"#format"	"{1:s},{2:d}"
+		"en"		"The player {1} called a medic and restored {2} health units"
+		"ru"		"Игрок {1} вызвал медика и восстановил {2} единиц здоровья"
+	}
+}
