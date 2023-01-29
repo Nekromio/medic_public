@@ -27,7 +27,7 @@ Plugin myinfo =
 	name = "[Fork] Medic/Медик",
 	author = "tuty, Nek.'a 2x2 | ggwp.site ",
 	description = "Возможность вызова медика",
-	version = "1.0.3",
+	version = "1.0.4",
 	url = "https://ggwp.site/"
 };
 
@@ -128,14 +128,15 @@ Action Command_Medic(int client, any args)
 
 	SetEntProp(client, Prop_Data, "m_iHealth", cvMaxHealth.IntValue);
 	SetClientMoney(client, iMoney - cvCost.IntValue);
+	
 	CPrintToChat(client, "%t", "Tag", "The medic helped");	
-
+	
 	if(cvShowCall.IntValue)
 	{
 		char sName[32];
 		GetClientName(client, sName, sizeof(sName) - 1);
 		for(int i = 1; i <= MaxClients; i++) if(i != client && IsClientInGame(i) && !IsFakeClient(i))
-			CPrintToChat(i, "%t", "Tag", "I called a medic", sName, health);
+			CPrintToChat(i, "%t", "Tag", "I called a medic", sName, cvMaxHealth.IntValue-health);
 	}
 	
 	float fOrigin[3];
